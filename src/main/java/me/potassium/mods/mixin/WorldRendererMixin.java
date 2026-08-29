@@ -24,19 +24,20 @@ public class WorldRendererMixin {
 
     /**
      * 注入渲染开始
+     *
+     * 注意：暂时注释，因为 Minecraft 1.21 中 render 方法签名已改变
+     * 需要找到正确的方法描述符
      */
-    @Inject(method = "render", at = @At("HEAD"))
-    private void onRenderStart(CallbackInfo ci) {
-        // 性能追踪：记录渲染开始时间
-        PotassiumMod.LOGGER.debug("Frame render start");
-    }
+    // @Inject(method = "render", at = @At("HEAD"))
+    // private void onRenderStart(CallbackInfo ci) {
+    //     PotassiumMod.LOGGER.debug("Frame render start");
+    // }
 
     /**
      * 注入渲染结束
      */
-    @Inject(method = "render", at = @At("RETURN"))
-    private void onRenderEnd(CallbackInfo ci) {
-        // 性能追踪：记录渲染结束时间
-        PotassiumMod.LOGGER.debug("Frame render end");
-    }
+    // @Inject(method = "render", at = @At("RETURN"))
+    // private void onRenderEnd(CallbackInfo ci) {
+    //     PotassiumMod.LOGGER.debug("Frame render end");
+    // }
 }
