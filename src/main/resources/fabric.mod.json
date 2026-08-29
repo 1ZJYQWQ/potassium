@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "potassium",
+  "version": "${version}",
+  "name": "Potassium",
+  "description": "${description}",
+  "authors": [
+    "${authors}"
+  ],
+  "contact": {
+    "homepage": "https://github.com/1ZJYQWQ/potassium",
+    "sources": "https://github.com/1ZJYQWQ/potassium"
+  },
+  "license": "${license}",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.potassium.mods.PotassiumMod"
+    ]
+  },
+  "mixins": [
+    "potassium.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "~1.21",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "sodium": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "badges": [ "library" ],
+      "parent": {
+        "id": "potassium",
+        "name": "Potassium",
+        "description": "极致的 Minecraft 客户端优化模组"
+      }
+    }
+  }
+}

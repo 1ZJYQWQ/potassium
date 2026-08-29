@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.potassium.mods.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "potassium-refmap.json",
+  "mixins": [
+  ],
+  "client": [
+    "WorldRendererMixin",
+    "ChunkBuilderMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

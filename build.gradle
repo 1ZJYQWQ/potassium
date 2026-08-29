@@ -1,0 +1,86 @@
+plugins {
+    id 'fabric-loom' version '1.6-SNAPSHOT'
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.mod_id
+
+base {
+    archivesName = project.mod_name
+}
+
+repositories {
+    // Fabric 官方仓库
+    mavenCentral()
+
+    // Fabric API
+    maven { url 'https://maven.fabricmc.net/' }
+
+    // Minecraft 映射
+    maven { url 'https://maven.ornithemc.com/releases' }
+}
+
+dependencies {
+    // Minecraft 和 Fabric
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    // 不嵌入 FastUtil，使用 Minecraft 内置的各版本
+    // 避免之前 21MB JAR 的问题
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mod_id", project.mod_id
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version,
+               "mod_id": project.mod_id,
+               "mod_name": project.mod_name,
+               "mod_description": project.mod_description,
+               "authors": project.authors,
+               "license": project.license
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = project.java_version.toInteger()
+    it.options.encoding = 'UTF-8'
+
+    // 启用所有推荐警告
+    it.options.compilerArgs += ['-Xlint:all']
+}
+
+java {
+    withSourcesJar()
+
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.base.archivesName.get()}"}
+    }
+
+    // 清晰的 JAR 命名
+    archiveClassifier = ''
+}
+
+// 配置国内镜像加速（可选）
+allprojects {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+    }
+
+    buildscript {
+        repositories {
+            maven { url 'https://maven.aliyun.com/repository/public' }
+            maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        }
+    }
+}
