@@ -41,6 +41,10 @@ public class PotassiumMod implements ClientModInitializer {
 
         builderPool = new AsyncBuilderPool(workerThreads);
 
+        // 初始化集成模块
+        me.potassium.mods.render.integration.ChunkBuilderIntegration.initialize();
+        me.potassium.mods.render.integration.RenderIntegration.initialize();
+
         LOGGER.info("Potassium 初始化完成!");
     }
 
