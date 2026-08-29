@@ -24,11 +24,14 @@ public class ChunkBuilderMixin {
 
     /**
      * 注入区块重建调度
+     *
+     * 注意：暂时注释掉，因为 ChunkBuilder.schedule 有多个重载
+     * 需要指定具体的方法描述符
      */
-    @Inject(method = "schedule", at = @At("HEAD"), cancellable = true)
-    private void onScheduleRebuild(CallbackInfo ci) {
-        // TODO: 使用 Potassium 的并行调度器替换原版
-        // 当前先不取消原版逻辑，待核心功能完成后启用
-        PotassiumMod.LOGGER.debug("Chunk rebuild scheduled");
-    }
+    // @Inject(method = "schedule", at = @At("HEAD"), cancellable = true)
+    // private void onScheduleRebuild(CallbackInfo ci) {
+    //     // TODO: 使用 Potassium 的并行调度器替换原版
+    //     // 当前先不取消原版逻辑，待核心功能完成后启用
+    //     PotassiumMod.LOGGER.debug("Chunk rebuild scheduled");
+    // }
 }

@@ -3,7 +3,7 @@
   "id": "potassium",
   "version": "${version}",
   "name": "Potassium",
-  "description": "${description}",
+  "description": "${mod_description}",
   "authors": [
     "${authors}"
   ],
