@@ -36,21 +36,7 @@ Potassium 是一个专注于 **CPU 多线程优化** 和 **内存管理优化** 
 | **CPU 主线程耗时** | 39.8ms | **30.4ms** (-24%) |
 | **区块吞吐量** | 7205 | **8281** (+15%) |
 
-## 法律声明
 
-本项目基于以下合法来源独立开发：
-
-1. **用户提供的性能测试报告** - 真实性能数据
-2. **Minecraft 原版公开 API** - Fabric API 文档
-3. **通用的计算机科学原理**:
-   - 《Java Concurrency in Practice》- Brian Goetz
-   - 《Disruptor High-Performance Queue》- LMAX 开源文档
-   - 《Work-Stealing Scheduling》- Blumofe & Leiserson 论文 (1999)
-   - 《Object Pool Pattern》- 游戏引擎设计通用模式
-
-**本项目未参考任何特定渲染优化模组的源代码。**
-
-所有架构设计均基于 SPECIFICATION.md 中的独立设计思路。
 
 ## 构建
 
